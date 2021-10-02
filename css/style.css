@@ -2,3 +2,8 @@
     padding: 0;
     margin: 0;
 }
+
+button.active{
+    color: darkmagenta !important;
+    border-bottom: 2px solid darkmagenta !important;
+}
