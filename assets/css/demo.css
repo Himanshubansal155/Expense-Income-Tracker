@@ -1,0 +1,14 @@
+.logo-container {
+  left: 50px;
+  position: absolute;
+  top: 20px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-container .logo {
+  overflow: hidden;
+  padding: 5px;
+  width: 200px;
+}
