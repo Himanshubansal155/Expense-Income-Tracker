@@ -1,3 +1,11 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
 .made-with-mk {
   width: 50px;
   height: 50px;
@@ -212,7 +220,7 @@ h3 .small {
   min-height: 410px;
   background-color: #ffffff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 10px !important;
   padding: 10px 0;
 }
 
@@ -241,11 +249,57 @@ li {
 
 #content-heading {
   font-weight: 200;
-  text-align: justify;
+  text-align: center;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 button {
   transition: all 1s ease;
+}
+
+.info-text {
+  text-align: center;
+  color: rgb(51, 51, 51);
+  font-size: 22px;
+  line-height: 20px;
+  font-weight: 300;
+  padding: 20px 0;
+  margin: 0;
+}
+
+.row-div {
+  width: 100%;
+  margin: 0 !important;
+  padding-bottom: 20px;
+}
+
+.min-h{
+  min-height: 320px;
+}
+
+.coloffset {
+  margin-left: 8.33%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: 400;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.buttn{
+  text-transform: uppercase;
+  background-color: darkorange !important;
+  padding: 5px 10px;
+  min-width: 140px;
+  margin-right: 10px;
+  color: white !important;
 }
