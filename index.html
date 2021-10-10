@@ -25,7 +25,7 @@
           </div>
         </div>
       </a>
-      <a href="/index.html" class="made-with-mk">
+      <a href="#" class="made-with-mk">
         <div class="brand">EM</div>
         <div class="made-with">Expense <strong>Manager</strong></div>
       </a>
@@ -95,7 +95,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                 >
-                  <form action="./src/Dashboard.html">
+                  <form action="./src/Dashboard.html" name="loginForm" method="get">
                     <div class="min-h">
                       <div class="row row-div">
                         <h4 class="info-text">Let's start to save Money</h4>
@@ -108,7 +108,10 @@
                               class="form-control"
                               autocomplete="email"
                               placeholder="andrew@hb.com"
+                              onkeyup="onLoginChange(this)"
+                              onblur="onLoginChange(this)"
                             />
+                            <div id="emailError" class="text-danger error"></div>
                           </div>
                         </div>
                         <div class="col-sm-10 coloffset">
@@ -116,12 +119,15 @@
                             >Password<sup class="text-danger">*</sup></label
                           >
                           <input
-                            name="passowrd"
+                            name="password"
                             autocomplete="current-password"
                             type="password"
                             class="form-control"
                             placeholder="********"
+                            onkeyup="onLoginChange(this)"
+                            onblur="onLoginChange(this)"
                           />
+                          <div id="passwordError" class="text-danger error"></div>
                         </div>
                       </div>
                     </div>
@@ -133,6 +139,7 @@
                         "
                         id="login"
                         type="submit"
+                        disabled
                       >
                         Login
                       </button>
@@ -145,7 +152,7 @@
                   role="tabpanel"
                   aria-labelledby="profile-tab"
                 >
-                  <form action="">
+                  <form action="./src/Dashboard.html" method="post" name="signupForm">
                     <div class="row row-div">
                       <h4 class="info-text">
                         Let's start with the basic information
@@ -155,12 +162,15 @@
                         <div class="form-group">
                           <label>Name<sup class="text-danger">*</sup></label>
                           <input
-                            name="firstname"
+                            name="name"
                             type="text"
                             autocomplete="name"
                             class="form-control"
                             placeholder="Andrew..."
+                            onkeyup="onSignupChange(this)"
+                            onblur="onSignupChange(this)"
                           />
+                          <div id="nameSignError" class="text-danger error"></div>
                         </div>
                       </div>
                       <div class="col-sm-10 coloffset">
@@ -172,7 +182,10 @@
                             class="form-control"
                             autocomplete="email"
                             placeholder="andrew@hb.com"
+                            onkeyup="onSignupChange(this)"
+                            onblur="onSignupChange(this)"
                           />
+                          <div id="emailSignError" class="text-danger error"></div>
                         </div>
                       </div>
                       <div class="col-sm-10 coloffset">
@@ -181,12 +194,15 @@
                             >Password<sup class="text-danger">*</sup></label
                           >
                           <input
-                            name="passowrd"
+                            name="password"
                             autocomplete="new-password"
                             type="password"
                             class="form-control"
                             placeholder="********"
+                            onkeyup="onSignupChange(this)"
+                            onblur="onSignupChange(this)"
                           />
+                          <div id="passwordSignError" class="text-danger error"></div>
                         </div>
                       </div>
                     </div>
@@ -197,6 +213,7 @@
                           buttn
                         "
                         id="register"
+                        disabled
                       >
                         Register
                       </button>
@@ -219,17 +236,6 @@
       integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
       crossorigin="anonymous"
     ></script>
-    <script>
-      function onTabClick(tab) {
-        if (tab === 0) {
-          document.getElementById("content-heading").innerHTML =
-            "<b>LOGIN</b> YOUR PROFILE <br /><small>This information will let us know more aboutyou.</small>";
-        } else {
-          document.getElementById("content-heading").innerHTML =
-            "<b>REGISTER</b> YOUR PROFILE <br /><small>This information will let us know more aboutyou.</small>";
-        }
-        return true;
-      }
-    </script>
+    <script src="./js/formValidation.js"></script>
   </body>
 </html>
