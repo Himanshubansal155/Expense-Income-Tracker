@@ -183,7 +183,69 @@ h3 .small {
   background-size: cover;
 }
 
-.card-random{
-    width: 50%;
-    margin: auto;
+.card-random {
+  width: 50%;
+  margin: auto;
+}
+
+.logo-container {
+  left: 50px;
+  position: absolute;
+  top: 20px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-container .logo {
+  overflow: hidden;
+  padding: 5px;
+  width: 200px;
+}
+
+.wizard-container {
+  padding-top: 100px;
+  z-index: 3;
+}
+
+.wizard-card {
+  min-height: 410px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
+.w-full {
+  width: 100%;
+}
+
+button.active {
+  background-color: darkorange !important;
+  opacity: 1 !important;
+  transition: all 1s ease;
+}
+
+/* button.active ~ .button1{
+  position: absolute;
+  left: -200px;
+} */
+
+li {
+  padding: 0 !important;
+}
+
+.mr {
+  margin: 0 !important;
+}
+
+#content-heading {
+  font-weight: 200;
+  text-align: justify;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+button {
+  transition: all 1s ease;
 }
