@@ -283,7 +283,7 @@ button {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 label {
@@ -302,4 +302,14 @@ label {
   min-width: 140px;
   margin-right: 10px;
   color: white !important;
+}
+
+[type=submit]:disabled{
+  cursor: not-allowed !important;
+}
+
+.error{
+  height: 10px !important;
+  font-size: 12px !important;
+  text-align: right;
 }
