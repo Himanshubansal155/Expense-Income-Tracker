@@ -28,6 +28,7 @@ form {
   border-radius: 20px;
   background-color: rgb(241, 239, 239);
   border-color: white;
+  
 }
 
 .image img {
@@ -44,4 +45,7 @@ form {
   margin-left: 200px;
   margin-right: 200px;
 }
-
+.btn{
+  margin-left: 70px;
+  margin-top: 10px;
+}
