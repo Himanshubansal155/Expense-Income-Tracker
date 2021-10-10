@@ -26,7 +26,7 @@ function onLoginChange(e) {
     if (validateEmail(e.value)) {
       emailLoginValidate = true;
       document.getElementById("emailError").innerHTML = "";
-      if (document.forms["loginForm"]["password"].value !== "") {
+      if (document.forms["loginForm"]["password"].value !== "" && document.forms["loginForm"]["paasword"].value.length > 4) {
         document.getElementById("passwordError").innerHTML = "";
         passwordLoginValidate = true;
       }
@@ -70,11 +70,11 @@ function onSignupChange(e) {
     if (validateEmail(e.value)) {
       emailSignUpValidate = true;
       document.getElementById("emailSignError").innerHTML = "";
-      if (document.forms["loginForm"]["password"].value !== "") {
+      if (document.forms["signupForm"]["password"].value !== "" && document.forms["signupForm"]["password"].value.length > 4) {
         passwordSignUpValidate = true;
         document.getElementById("passwordSignError").innerHTML = "";
       }
-      if (document.forms["loginForm"]["name"].value !== "") {
+      if (document.forms["signupForm"]["name"].value !== "" && document.forms["signupForm"]["name"].value.length > 2) {
         nameSignUpValidate = true;
         document.getElementById("nameSignError").innerHTML = "";
       }
@@ -92,11 +92,11 @@ function onSignupChange(e) {
     if (e.value !== "" && e.value.length > 4) {
       passwordSignUpValidate = true;
       document.getElementById("passwordSignError").innerHTML = "";
-      if (validateEmail(document.forms["loginForm"]["email"].value)) {
+      if (validateEmail(document.forms["signupForm"]["email"].value)) {
         emailSignUpValidate = true;
         document.getElementById("emailSignError").innerHTML = "";
       }
-      if (document.forms["loginForm"]["name"].value !== "") {
+      if (document.forms["signupForm"]["name"].value !== "" && document.forms["signupForm"]["name"].value.length > 2) {
         nameSignUpValidate = true;
         document.getElementById("nameSignError").innerHTML = "";
       }
@@ -113,11 +113,11 @@ function onSignupChange(e) {
   } else if (e.name === "name") {
     if (e.value !== "" && e.value.length > 2) {
       nameSignUpValidate = true;
-      if (validateEmail(document.forms["loginForm"]["email"].value)) {
+      if (validateEmail(document.forms["signupForm"]["email"].value)) {
         emailSignUpValidate = true;
         document.getElementById("emailSignError").innerHTML = "";
       }
-      if (document.forms["loginForm"]["password"].value !== "") {
+      if (document.forms["signupForm"]["password"].value !== "" && document.forms["signupForm"]["password"].value.length > 4) {
         passwordSignUpValidate = true;
         document.getElementById("passwordSignError").innerHTML = "";
       }

@@ -306,6 +306,7 @@ label {
 
 [type=submit]:disabled{
   cursor: not-allowed !important;
+  pointer-events: fill !important;
 }
 
 .error{
