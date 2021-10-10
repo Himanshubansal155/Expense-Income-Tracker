@@ -37,15 +37,11 @@ form {
 }
 .brands {
   display: flex;
-  margin-left: 30px;
-  margin-top: 5px;
+  align-items: center;
 }
 
 .brands h6 {
-  margin-top: 10px;
   margin-left: 200px;
   margin-right: 200px;
 }
-.brands h5 {
-  margin-top: 10px;
-}
+
