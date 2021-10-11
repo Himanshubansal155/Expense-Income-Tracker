@@ -113,6 +113,7 @@ function onSignupChange(e) {
   } else if (e.name === "name") {
     if (e.value !== "" && e.value.length > 2) {
       nameSignUpValidate = true;
+      document.getElementById("nameSignError").innerHTML = "";
       if (validateEmail(document.forms["signupForm"]["email"].value)) {
         emailSignUpValidate = true;
         document.getElementById("emailSignError").innerHTML = "";
