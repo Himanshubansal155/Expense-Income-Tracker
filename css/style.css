@@ -7,3 +7,7 @@ button.active{
     color: darkmagenta !important;
     border-bottom: 2px solid darkmagenta !important;
 }
+
+.min-w-67{
+    min-width: 91px;
+}
