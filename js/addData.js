@@ -1,5 +1,6 @@
 var toastLiveExample = document.getElementById("liveToast");
 var toast = new bootstrap.Toast(toastLiveExample);
+let src = "";
 
 function addData() {
   if (
@@ -16,7 +17,7 @@ function addData() {
         category: $("#addCategory")[0]?.value,
         amount: $("#addAmount")[0]?.value,
         date: $("#addDate")[0]?.value,
-        receipt: $("#addReceipt")[0]?.value,
+        receipt: src,
       });
       localStorage.setItem("Expenses", JSON.stringify(dataArray));
     } else {
@@ -25,17 +26,17 @@ function addData() {
         category: $("#addCategory")[0]?.value,
         amount: $("#addAmount")[0]?.value,
         date: $("#addDate")[0]?.value,
-        receipt: $("#addReceipt")[0]?.value,
+        receipt: src,
       });
       localStorage.setItem("Expenses", JSON.stringify(data));
     }
     $("#toastbody").html("Transaction Added Successfully.");
-    $("#toastbody").prop('class', "text-success");
+    $("#toastbody").prop("class", "text-success");
     toast.show();
     emptyDataFields();
   } else {
     $("#toastbody").html("Fields Are Empty.");
-    $("#toastbody").prop('class', "text-danger");
+    $("#toastbody").prop("class", "text-danger");
     toast.show();
   }
 }
@@ -52,16 +53,21 @@ function findUniqueCategory() {
   return [];
 }
 
-function addCategoriesOptions() {
+function addCategoriesOptions(e) {
   const data = findUniqueCategory();
   let str = "";
   data.map((e) => {
     str += `<option value="${e}">${e}</option>`;
   });
-  $("#addCategory").html(str);
+  if (e) {
+    $(`#${e}`).html(str);
+  } else {
+    $("#addCategory").html(str);
+  }
 }
 
 addCategoriesOptions();
+addCategoriesOptions("addCategoryDelete");
 
 function addCategory() {
   if ($("#categoryName")[0]?.value) {
@@ -80,11 +86,11 @@ function addCategory() {
     addCategoriesOptions();
     emptyCategoryFields();
     $("#toastbody").html("Category Added Successfully.");
-    $("#toastbody").prop('class', "text-success");
+    $("#toastbody").prop("class", "text-success");
     toast.show();
   } else {
     $("#toastbody").html("Fields Are Empty.");
-    $("#toastbody").prop('class', "text-danger");
+    $("#toastbody").prop("class", "text-danger");
     toast.show();
   }
 }
@@ -99,11 +105,11 @@ function validateCategory() {
 
 function emptyCategoryFields() {
   $("#categoryName").val("");
+  $("#addCategoryDelete").val("");
 }
 
 function emptyDataFields() {
   $("#addName").val("");
-  $("#addCategory").val("");
   $("#addAmount").val("");
   $("#addDate").val("");
   $("#addReceipt").val("");
@@ -124,4 +130,42 @@ function validateAddData() {
 
 function stopPropogation(e) {
   e.stopPropagation();
+}
+
+function uploadVideo(event) {
+  // var image = document.getElementById('imagetag');
+  src = URL.createObjectURL(event.target.files[0]);
+  // image.src = src;
+}
+
+function deleteCategory() {
+  let categories = JSON.parse(localStorage.getItem("ExpensesCategory"));
+  let data = JSON.parse(localStorage.getItem("Expenses"));
+  let arr = data.map((e, index) => {
+    if (e.category === $("#addCategoryDelete")[0].value) {
+      return index;
+    }
+  });
+  if (arr.filter((e) => e !== undefined).length <= 1) {
+    arr.map((e) => {
+      if (e !== undefined) {
+        data.splice(e, 1);
+      }
+    });
+    categories.splice($("#addCategoryDelete")[0].selectedIndex, 1);
+  } else {
+    $("#toastbody").html(
+      `${
+        $("#addCategoryDelete")[0].value
+      } category has more than 1 transaction.`
+    );
+    $("#toastbody").prop("class", "text-danger");
+    toast.show();
+  }
+  localStorage.setItem("ExpensesCategory", JSON.stringify(categories));
+  localStorage.setItem("Expenses", JSON.stringify(data));
+  emptyCategoryFields();
+  addCategoriesOptions("addCategoryDelete");
+  $("#toastbody").html("Category Deleted Successfully.");
+  toast.show();
 }

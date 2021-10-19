@@ -1,13 +1,13 @@
-*{
-    padding: 0;
-    margin: 0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-button.active{
-    color: darkmagenta !important;
-    border-bottom: 2px solid darkmagenta !important;
+button.active {
+  color: darkmagenta !important;
+  border-bottom: 2px solid darkmagenta !important;
 }
 
-.min-w-67{
-    min-width: 91px;
+.min-w-67 {
+  min-width: 91px;
 }
