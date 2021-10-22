@@ -1,6 +1,6 @@
 var toastLiveExample = document.getElementById("liveToast");
 var toast = new bootstrap.Toast(toastLiveExample);
-let src = "";
+let src;
 
 function addData() {
   if (
@@ -34,6 +34,7 @@ function addData() {
     $("#toastbody").prop("class", "text-success");
     toast.show();
     emptyDataFields();
+    showData();
   } else {
     $("#toastbody").html("Fields Are Empty.");
     $("#toastbody").prop("class", "text-danger");
@@ -134,7 +135,9 @@ function stopPropogation(e) {
 
 function uploadVideo(event) {
   // var image = document.getElementById('imagetag');
-  src = URL.createObjectURL(event.target.files[0]);
+  // src = URL.createObjectURL(event.target.files[0]);
+  src=event.target.files[0];
+  console.log(src);
   // image.src = src;
 }
 
@@ -168,4 +171,55 @@ function deleteCategory() {
   addCategoriesOptions("addCategoryDelete");
   $("#toastbody").html("Category Deleted Successfully.");
   toast.show();
+}
+
+function deleteData(index, category) {
+  let data = JSON.parse(localStorage.getItem("Expenses"));
+  data.splice(index, 1);
+  localStorage.setItem("Expenses", JSON.stringify(data));
+  showData(category);
+  $("#toastbody").html("Transaction Deleted Successfully.");
+  toast.show();
+}
+
+function showData(category) {
+  let data = JSON.parse(localStorage.getItem("Expenses"));
+  let displayData = "";
+  data.map((e, index) => {
+    if (category !== undefined && e.category === category) {
+      displayData += `<div>${e.name} ${e.category}<button onClick="deleteData(${index}, ${category})">delete</button></div>`;
+    }
+    if (category === undefined) {
+      displayData += `<div data-bs-toggle="modal" data-bs-target="#editDataModal" onClick="editFieldsFilled(${index})">${e.name} ${e.category}<button onClick="deleteData(${index})" type="button" class="btn btn-primary">delete</button> <img src="${createURL(e.receipt)}" width='100' ></div>`;
+    }
+  });
+  $("#homeData").html(displayData);
+}
+
+showData();
+
+function editFieldsFilled(index) {
+  addCategoriesOptions("editCategory");
+  let data = JSON.parse(localStorage.getItem("Expenses"));
+  let transaction = data[index];
+  $("#editName").val(transaction.name);
+  $("#editAmount").val(transaction.amount);
+  $("#editDate").val(transaction.date);
+  $("#editCategory").val(transaction.category);
+}
+
+function createURL(url) {
+  if(url === ''){
+    return 'https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png';
+  } else {
+    let dta;
+    try {
+      dta = URL.createObjectURL(url);
+    } catch (error) {
+      console.log(error);
+      return 'https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png';
+    }
+    console.log(dta);
+    // return URL.createObjectURL(url);
+  }
 }

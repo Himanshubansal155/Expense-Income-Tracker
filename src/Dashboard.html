@@ -147,6 +147,7 @@
         aria-labelledby="home-tab"
       >
         .overview..
+        <div id="homeData"></div>
         <button
           type="button"
           class="btn btn-primary"
@@ -414,6 +415,119 @@
               data-bs-dismiss="modal"
             >
               Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="editDataModal"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+      onclick="emptyDataFields()"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered"
+        onclick="stopPropogation(event)"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Edit Transaction
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <span class="input-group-text min-w-67" id="basic-addon2"
+                >Name<span class="text-danger">*</span></span
+              >
+              <input
+                type="text"
+                id="editName"
+                class="form-control"
+                placeholder="Expense Name"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                onchange="validateAddData()"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Category<span class="text-danger">*</span></label
+              >
+              <select
+                class="form-select"
+                id="editCategory"
+                onchange="validateAddData()"
+              ></select>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon2"
+                >Amount<span class="text-danger">*</span></span
+              >
+              <input
+                type="number"
+                id="editAmount"
+                class="form-control"
+                placeholder="Amount&#8377;"
+                aria-label="Recipient's Amount"
+                aria-describedby="basic-addon2"
+                min="0"
+                onchange="validateAddData()"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text min-w-67" id="basic-addon2"
+                >Date<span class="text-danger">*</span></span
+              >
+              <input
+                type="date"
+                id="editDate"
+                class="form-control"
+                placeholder="Date of Transaction"
+                aria-label="Recipient's Amount"
+                aria-describedby="basic-addon2"
+                onchange="validateAddData()"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupFile01"
+                >Upload Receipt</label
+              >
+              <input
+                type="file"
+                class="form-control"
+                id="editReceipt"
+                accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+                onchange="uploadVideo(event)"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              id="saveDataChanges"
+              class="btn btn-primary"
+              onclick="addData()"
+              data-bs-dismiss="modal"
+              disabled
+            >
+              Save Changes
             </button>
           </div>
         </div>
