@@ -190,7 +190,7 @@ function showData(category) {
       displayData += `<div>${e.name} ${e.category}<button onClick="deleteData(${index}, ${category})">delete</button></div>`;
     }
     if (category === undefined) {
-      displayData += `<div data-bs-toggle="modal" data-bs-target="#editDataModal" onClick="editFieldsFilled(${index})">${e.name} ${e.category}<button onClick="deleteData(${index})" type="button" class="btn btn-primary">delete</button> <img src="${createURL(e.receipt)}" width='100' ></div>`;
+      displayData += `<div data-bs-toggle="modal" data-bs-target="#editDataModal" onClick="editFieldsFilled(${index})">${e.name} ${e.category}<button onClick="deleteData(${index})" type="button" class="btn btn-primary">delete</button> <img src="${createURL(e.receipt)}" width='50' height='50'></div>`;
     }
   });
   $("#homeData").html(displayData);
@@ -216,10 +216,7 @@ function createURL(url) {
     try {
       dta = URL.createObjectURL(url);
     } catch (error) {
-      console.log(error);
-      return 'https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png';
+      return `https://picsum.photos/id/${Math.floor((Math.random() * 100) + 1)}/200/300`;
     }
-    console.log(dta);
-    // return URL.createObjectURL(url);
   }
 }
