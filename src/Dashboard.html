@@ -277,7 +277,7 @@
                 type="file"
                 class="form-control"
                 id="addReceipt"
-                accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+                accept=".jpg,.jpeg,.png"
                 onchange="uploadVideo(event)"
               />
             </div>
@@ -426,11 +426,9 @@
       tabindex="-1"
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
-      onclick="emptyDataFields()"
     >
       <div
         class="modal-dialog modal-dialog-centered"
-        onclick="stopPropogation(event)"
       >
         <div class="modal-content">
           <div class="modal-header">
@@ -506,7 +504,7 @@
                 type="file"
                 class="form-control"
                 id="editReceipt"
-                accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+                accept=".jpg,.jpeg,.png"
                 onchange="uploadVideo(event)"
               />
             </div>
@@ -523,9 +521,8 @@
               type="button"
               id="saveDataChanges"
               class="btn btn-primary"
-              onclick="addData()"
+              onclick="editData()"
               data-bs-dismiss="modal"
-              disabled
             >
               Save Changes
             </button>

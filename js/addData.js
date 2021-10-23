@@ -1,6 +1,7 @@
 var toastLiveExample = document.getElementById("liveToast");
 var toast = new bootstrap.Toast(toastLiveExample);
 let src;
+let indexEdit = 0;
 
 function addData() {
   if (
@@ -35,10 +36,12 @@ function addData() {
     toast.show();
     emptyDataFields();
     showData();
+    src = undefined;
   } else {
     $("#toastbody").html("Fields Are Empty.");
     $("#toastbody").prop("class", "text-danger");
     toast.show();
+    src = undefined;
   }
 }
 
@@ -134,11 +137,20 @@ function stopPropogation(e) {
 }
 
 function uploadVideo(event) {
-  // var image = document.getElementById('imagetag');
-  // src = URL.createObjectURL(event.target.files[0]);
-  src=event.target.files[0];
-  console.log(src);
-  // image.src = src;
+  const convertBlobToBase64 = () =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(new Blob([event.target.files[0]]));
+      return reader;
+    });
+
+  convertBlobToBase64().then((res) => {
+    src = res;
+  });
 }
 
 function deleteCategory() {
@@ -185,14 +197,26 @@ function deleteData(index, category) {
 function showData(category) {
   let data = JSON.parse(localStorage.getItem("Expenses"));
   let displayData = "";
-  data.map((e, index) => {
-    if (category !== undefined && e.category === category) {
-      displayData += `<div>${e.name} ${e.category}<button onClick="deleteData(${index}, ${category})">delete</button></div>`;
-    }
-    if (category === undefined) {
-      displayData += `<div data-bs-toggle="modal" data-bs-target="#editDataModal" onClick="editFieldsFilled(${index})">${e.name} ${e.category}<button onClick="deleteData(${index})" type="button" class="btn btn-primary">delete</button> <img src="${createURL(e.receipt)}" width='50' height='50'></div>`;
-    }
-  });
+  if (data && data.length > 0) {
+    data.map((e, index) => {
+      if (category !== undefined && e.category === category) {
+        displayData += `<div>${e.name} ${e.category}<button onClick="deleteData(${index}, ${category})">delete</button></div>`;
+      }
+      if (category === undefined) {
+        displayData += `<div><span id="number${index}">${
+          index + 1
+        }.</span><img src="${createURL()}" alt="Profile" width='50' height='50'>${
+          e.name
+        } ${
+          e.category
+        }<button onClick="deleteData(${index})" type="button" class="btn btn-primary">delete</button> <button onClick="editFieldsFilled(${index})" type="button" data-bs-toggle="modal" data-bs-target="#editDataModal" class="btn btn-primary">Edit</button>${
+          e.receipt ? `<a href="${e.receipt}">Download Receipt</a>` : ""
+        }</div>`;
+      }
+    });
+  } else {
+    displayData = "No Transaction Available";
+  }
   $("#homeData").html(displayData);
 }
 
@@ -200,6 +224,7 @@ showData();
 
 function editFieldsFilled(index) {
   addCategoriesOptions("editCategory");
+  indexEdit = index;
   let data = JSON.parse(localStorage.getItem("Expenses"));
   let transaction = data[index];
   $("#editName").val(transaction.name);
@@ -208,15 +233,38 @@ function editFieldsFilled(index) {
   $("#editCategory").val(transaction.category);
 }
 
-function createURL(url) {
-  if(url === ''){
-    return 'https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png';
+function createURL() {
+  return `https://picsum.photos/id/${Math.floor(
+    Math.random() * 100 + 1
+  )}/200/300`;
+}
+
+function editData() {
+  if (
+    $("#editName")[0]?.value &&
+    $("#editAmount")[0]?.value &&
+    $("#editDate")[0]?.value &&
+    $("#editCategory")[0]?.value
+  ) {
+    let data = JSON.parse(localStorage.getItem("Expenses"));
+    let fieldData = {
+      name: $("#editName")[0]?.value,
+      category: $("#editCategory")[0]?.value,
+      amount: $("#editAmount")[0]?.value,
+      date: $("#editDate")[0]?.value,
+      receipt: src === undefined ? data[indexEdit].receipt : src,
+    };
+    data[indexEdit] = fieldData;
+    localStorage.setItem("Expenses", JSON.stringify(data));
+    $("#toastbody").html("Transaction Edited Successfully.");
+    $("#toastbody").prop("class", "text-success");
+    toast.show();
+    showData();
+    src = undefined;
   } else {
-    let dta;
-    try {
-      dta = URL.createObjectURL(url);
-    } catch (error) {
-      return `https://picsum.photos/id/${Math.floor((Math.random() * 100) + 1)}/200/300`;
-    }
+    $("#toastbody").html("Fill All Fields.");
+    $("#toastbody").prop("class", "text-danger");
+    toast.show();
+    src = undefined;
   }
 }
