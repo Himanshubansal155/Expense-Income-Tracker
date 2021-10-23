@@ -88,6 +88,7 @@ function addCategory() {
       localStorage.setItem("ExpensesCategory", JSON.stringify(dataArr));
     }
     addCategoriesOptions();
+    addCategoriesOptions("addCategoryDelete");
     emptyCategoryFields();
     $("#toastbody").html("Category Added Successfully.");
     $("#toastbody").prop("class", "text-success");
@@ -168,6 +169,13 @@ function deleteCategory() {
       }
     });
     categories.splice($("#addCategoryDelete")[0].selectedIndex, 1);
+    localStorage.setItem("ExpensesCategory", JSON.stringify(categories));
+    localStorage.setItem("Expenses", JSON.stringify(data));
+    addCategoriesOptions("addCategoryDelete");
+    $("#toastbody").html("Category Deleted Successfully.");
+    $("#toastbody").prop("class", "text-success");
+    showData();
+    toast.show();
   } else {
     $("#toastbody").html(
       `${
@@ -177,12 +185,6 @@ function deleteCategory() {
     $("#toastbody").prop("class", "text-danger");
     toast.show();
   }
-  localStorage.setItem("ExpensesCategory", JSON.stringify(categories));
-  localStorage.setItem("Expenses", JSON.stringify(data));
-  emptyCategoryFields();
-  addCategoriesOptions("addCategoryDelete");
-  $("#toastbody").html("Category Deleted Successfully.");
-  toast.show();
 }
 
 function deleteData(index, category) {
@@ -217,7 +219,7 @@ function showData(category) {
           </div>
         </div>
         <div class="col-3 d-flex align-items-center">
-          <p class="mb-0">&#8377;${e.amount}</p>
+          <p class="mb-0">&#8377;${e.amount}.00</p>
         </div>
         <div class="col-2 d-flex align-items-center justify-content-center">
           <button
@@ -314,7 +316,7 @@ function showData(category) {
         </div>
         <div class="col-3">
           <p class="text-muted mb-0">${e.category}</p>
-          <p class="mb-0">&#8377;${e.amount}</p>
+          <p class="mb-0">&#8377;${e.amount}.00</p>
         </div>
         <div class="col-2 d-flex align-items-center justify-content-center">
           <button
