@@ -11,3 +11,19 @@ button.active {
 .min-w-67 {
   min-width: 91px;
 }
+
+.btnhover:focus {
+  box-shadow: none !important;
+}
+
+.btnhover:hover {
+  background-color: ghostwhite;
+}
+
+.btnhover:hover .bihover {
+  fill: blue;
+}
+
+.cardhover:hover {
+  background-color: rgb(252, 250, 250);
+}
