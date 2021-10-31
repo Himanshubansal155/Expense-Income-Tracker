@@ -61,6 +61,8 @@ function monthChange(event) {
   let totalMonthlyAmount = JSON.parse(localStorage.getItem("TotalSalary"));
   if (totalMonthlyAmount !== null) {
     $('#amountMonthly').val(totalMonthlyAmount[(month - 1)]);
+  } else{
+    $('#amountMonthly').val(0);
   }
 }
 
