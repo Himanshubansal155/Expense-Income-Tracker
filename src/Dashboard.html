@@ -147,7 +147,7 @@
         aria-labelledby="home-tab"
       >
         .overview..
-        <div id="homeData"></div>
+        <div id="homeData" class="mt-2"></div>
         <button
           type="button"
           class="btn btn-primary"
@@ -156,6 +156,7 @@
         >
           +
         </button>
+        <div class="d-flex" id="dataprogress"></div>
       </div>
       <div
         class="tab-pane fade"
@@ -163,7 +164,7 @@
         role="tabpanel"
         aria-labelledby="profile-tab"
       >
-        .profile..
+        <div id="transactionData" class="mt-2"></div>
       </div>
       <div
         class="tab-pane fade"
@@ -188,6 +189,7 @@
         >
           -
         </button>
+        <div class="bg-grey" id="categoriesDataShown"></div>
       </div>
     </div>
 
@@ -427,9 +429,7 @@
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
     >
-      <div
-        class="modal-dialog modal-dialog-centered"
-      >
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
@@ -549,6 +549,24 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Transaction</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are You sure want to delete this transaction
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
       integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -560,5 +578,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./../js/addData.js"></script>
+    <script src="./../js/index.js"></script>
   </body>
 </html>

@@ -27,3 +27,25 @@ button.active {
 .cardhover:hover {
   background-color: rgb(252, 250, 250);
 }
+
+.progressbar{
+  height: 90vh;
+  background-color: seashell;
+  position: relative;
+  width: 1rem;
+  margin: 0 auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.progressbarw{
+  width: 1rem;
+  position: absolute;
+  bottom: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.moreSection{
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}

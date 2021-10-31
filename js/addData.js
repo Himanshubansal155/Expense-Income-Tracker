@@ -90,6 +90,7 @@ function addCategory() {
     addCategoriesOptions();
     addCategoriesOptions("addCategoryDelete");
     emptyCategoryFields();
+    progressBarWidth();
     $("#toastbody").html("Category Added Successfully.");
     $("#toastbody").prop("class", "text-success");
     toast.show();
@@ -175,6 +176,7 @@ function deleteCategory() {
     $("#toastbody").html("Category Deleted Successfully.");
     $("#toastbody").prop("class", "text-success");
     showData();
+    progressBarWidth();
     toast.show();
   } else {
     $("#toastbody").html(
@@ -399,6 +401,7 @@ function showData(category) {
     displayData = "No Transaction Available";
   }
   $("#homeData").html(displayData);
+  $("#transactionData").html(displayData);
 }
 
 showData();
@@ -456,3 +459,41 @@ var tooltipTriggerList = [].slice.call(
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl);
 });
+
+function overallBudget(category) {
+  let data = JSON.parse(localStorage.getItem("Expenses"));
+  let amount = 0;
+  data.map((e) => {
+    if (category !== undefined && category === e.category) {
+      amount += +e.amount;
+    }
+    if (category === undefined) {
+      amount += +e.amount;
+    }
+  });
+  return amount;
+}
+
+function progressBarWidth() {
+  $("#dataprogress").html('');
+  let categories = JSON.parse(localStorage.getItem("ExpensesCategory"));
+  const totalAmount = overallBudget();
+  let maxIndex = 0;
+  categories.map((e, index) => {
+    if (index < 5) {
+      const bnud = overallBudget(e);
+      let per = (bnud / totalAmount) * 100;
+      let str = `<div class="m-2"><div class="progressbar" id="progressBar"><div class="progress-bar progress-bar-striped progressbarw" role="progressbar" style="height: ${per}%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div></div>${e}</div>`;
+      $("#dataprogress").append(str);
+    } else {
+      maxIndex++;
+    }
+  });
+  if (maxIndex !== 0) {
+    $("#dataprogress").append(
+      `<div class="moreSection">+${maxIndex} more</div>`
+    );
+  }
+}
+
+progressBarWidth();
