@@ -55,3 +55,23 @@ function showCategories() {
 }
 
 showCategories();
+
+function monthChange(event) {
+  const month = +event.target.value.split("-")[1];
+  let totalMonthlyAmount = JSON.parse(localStorage.getItem("TotalSalary"));
+  if (totalMonthlyAmount !== null) {
+    $('#amountMonthly').val(totalMonthlyAmount[(month - 1)]);
+  }
+}
+
+function monthSalaryAdd() {
+  let totalMonthlyAmount = JSON.parse(localStorage.getItem("TotalSalary"));
+  if(totalMonthlyAmount == null){
+    totalMonthlyAmountArray=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    totalMonthlyAmountArray[($('#month')[0].value.split('-')[1] - 1)] = +$('#amountMonthly')[0].value;
+    localStorage.setItem("TotalSalary", JSON.stringify(totalMonthlyAmountArray));
+  } else{
+    totalMonthlyAmount[($('#month')[0].value.split('-')[1] - 1)] = +$('#amountMonthly')[0].value;
+    localStorage.setItem("TotalSalary", JSON.stringify(totalMonthlyAmount));
+  }
+}

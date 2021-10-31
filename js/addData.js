@@ -3,16 +3,6 @@ var toast = new bootstrap.Toast(toastLiveExample);
 let src;
 let indexEdit = 0;
 
-// let categoryFirst = JSON.parse(localStorage.getItem("ExpensesCategory"));
-// let dataFirst = JSON.parse(localStorage.getItem("Expenses"));
-// if(dataFirst === null){
-//   localStorage.setItem('Expenses', JSON.stringify([]));
-// }
-// if(categoryFirst === null){
-//   localStorage.setItem('ExpensesCategory', JSON.stringify([]));
-// }
-// console.log(dataFirst, categoryFirst);
-
 function addData() {
   if (
     $("#addName")[0]?.value &&
