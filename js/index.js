@@ -1,10 +1,17 @@
 function showCategories() {
   $("#categoriesDataShown").html("");
+  $("#categoriesSidebar").html(
+    '<div class="mb-2 cardSide" onClick="showData()">All <span class="float-end">></span></div>'
+  );
   let categories = JSON.parse(localStorage.getItem("ExpensesCategory"));
-  categories.sort();
-  categories.map((e, index) =>
-    $("#categoriesDataShown")
-      .append(`<div class="card container mb-3 cardhover">
+  if (categories !== null) {
+    categories.sort();
+    categories.map((e, index) => {
+      $("#categoriesSidebar").append(
+        `<div class="mb-2 cardSide" onClick="showData('${e}')">${e} <span class="float-end">></span></div>`
+      );
+      $("#categoriesDataShown")
+        .append(`<div class="card container mb-3 cardhover">
   <div class="card-body row">
     <div class="d-flex align-items-center col-5">
       <div class="">
@@ -42,8 +49,9 @@ function showCategories() {
       </button>
     </div>
   </div>
-</div>`)
-  );
+</div>`);
+    });
+  }
 }
 
 showCategories();

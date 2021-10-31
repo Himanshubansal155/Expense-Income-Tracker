@@ -3,6 +3,16 @@ var toast = new bootstrap.Toast(toastLiveExample);
 let src;
 let indexEdit = 0;
 
+// let categoryFirst = JSON.parse(localStorage.getItem("ExpensesCategory"));
+// let dataFirst = JSON.parse(localStorage.getItem("Expenses"));
+// if(dataFirst === null){
+//   localStorage.setItem('Expenses', JSON.stringify([]));
+// }
+// if(categoryFirst === null){
+//   localStorage.setItem('ExpensesCategory', JSON.stringify([]));
+// }
+// console.log(dataFirst, categoryFirst);
+
 function addData() {
   if (
     $("#addName")[0]?.value &&
@@ -161,12 +171,12 @@ function deleteCategory(valueData, indexData) {
   let data = JSON.parse(localStorage.getItem("Expenses"));
   let value;
   let selectedIndex;
-  if(valueData === undefined){
+  if (valueData === undefined) {
     value = $("#addCategoryDelete")[0].value;
   } else {
     value = valueData;
   }
-  if(indexData === undefined){
+  if (indexData === undefined) {
     selectedIndex = $("#addCategoryDelete")[0].selectedIndex;
   } else {
     selectedIndex = indexData;
@@ -411,8 +421,11 @@ function showData(category) {
     </div>`;
       }
     });
-  } else {
-    displayData = "No Transaction Available";
+  }
+  if (displayData === "") {
+    displayData =
+      "No Transaction Available " +
+      (category !== undefined ? `for ${category}` : "");
   }
   $("#homeData").html(displayData);
   $("#transactionData").html(displayData);
@@ -477,19 +490,21 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 function overallBudget(category) {
   let data = JSON.parse(localStorage.getItem("Expenses"));
   let amount = 0;
-  data.map((e) => {
-    if (category !== undefined && category === e.category) {
-      amount += +e.amount;
-    }
-    if (category === undefined) {
-      amount += +e.amount;
-    }
-  });
+  if (data !== null) {
+    data.map((e) => {
+      if (category !== undefined && category === e.category) {
+        amount += +e.amount;
+      }
+      if (category === undefined) {
+        amount += +e.amount;
+      }
+    });
+  }
   return amount;
 }
 
 function progressBarWidth() {
-  $("#dataprogress").html('');
+  $("#dataprogress").html("");
   let categories = JSON.parse(localStorage.getItem("ExpensesCategory"));
   const totalAmount = overallBudget();
   let maxIndex = 0;

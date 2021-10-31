@@ -29,7 +29,7 @@ button.active {
 }
 
 .progressbar{
-  height: 90vh;
+  min-height: 87.9vh;
   background-color: seashell;
   position: relative;
   width: 1rem;
@@ -45,7 +45,41 @@ button.active {
 }
 
 .moreSection{
-  height: 90vh;
+  min-height: 87.9vh;
   display: flex;
   align-items: center;
+}
+
+#dataprogress{
+  min-height: 91.9vh;
+}
+
+.cardSide{
+  cursor: pointer;
+  padding: 5px 10px;
+  color: black;
+  border-radius: 5px;
+  background-color: rgb(233, 246, 255);
+  opacity: 50%;
+}
+
+.cardSide:hover{
+  opacity: 100%;
+}
+
+#headingText{
+  font-size: 18px;
+  text-align: center;
+}
+
+.bglight{
+  background-color: rgb(250, 250, 250);
+}
+
+.addButton{
+  padding: 0 8px !important;
+}
+
+.addButton:focus {
+  box-shadow: none !important;
 }
