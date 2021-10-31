@@ -91,6 +91,7 @@ function addCategory() {
     addCategoriesOptions("addCategoryDelete");
     emptyCategoryFields();
     progressBarWidth();
+    showCategories();
     $("#toastbody").html("Category Added Successfully.");
     $("#toastbody").prop("class", "text-success");
     toast.show();
@@ -155,11 +156,23 @@ function uploadVideo(event) {
   });
 }
 
-function deleteCategory() {
+function deleteCategory(valueData, indexData) {
   let categories = JSON.parse(localStorage.getItem("ExpensesCategory"));
   let data = JSON.parse(localStorage.getItem("Expenses"));
+  let value;
+  let selectedIndex;
+  if(valueData === undefined){
+    value = $("#addCategoryDelete")[0].value;
+  } else {
+    value = valueData;
+  }
+  if(indexData === undefined){
+    selectedIndex = $("#addCategoryDelete")[0].selectedIndex;
+  } else {
+    selectedIndex = indexData;
+  }
   let arr = data.map((e, index) => {
-    if (e.category === $("#addCategoryDelete")[0].value) {
+    if (e.category === value) {
       return index;
     }
   });
@@ -169,7 +182,7 @@ function deleteCategory() {
         data.splice(e, 1);
       }
     });
-    categories.splice($("#addCategoryDelete")[0].selectedIndex, 1);
+    categories.splice(selectedIndex, 1);
     localStorage.setItem("ExpensesCategory", JSON.stringify(categories));
     localStorage.setItem("Expenses", JSON.stringify(data));
     addCategoriesOptions("addCategoryDelete");
@@ -177,6 +190,7 @@ function deleteCategory() {
     $("#toastbody").prop("class", "text-success");
     showData();
     progressBarWidth();
+    showCategories();
     toast.show();
   } else {
     $("#toastbody").html(
