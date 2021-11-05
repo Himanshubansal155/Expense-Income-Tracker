@@ -28,7 +28,7 @@ button.active {
   background-color: rgb(252, 250, 250);
 }
 
-.progressbar{
+.progressbar {
   min-height: 87.9vh;
   background-color: seashell;
   position: relative;
@@ -37,25 +37,25 @@ button.active {
   border-radius: 10px 10px 0 0;
 }
 
-.progressbarw{
+.progressbarw {
   width: 1rem;
   position: absolute;
   bottom: 0;
   border-radius: 10px 10px 0 0;
 }
 
-.moreSection{
+.moreSection {
   min-height: 87.9vh;
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-#dataprogress{
+#dataprogress {
   min-height: 91.9vh;
 }
 
-.cardSide{
+.cardSide {
   cursor: pointer;
   padding: 5px 10px;
   color: black;
@@ -64,20 +64,21 @@ button.active {
   opacity: 50%;
 }
 
-.cardSide:hover{
+.cardSide:hover {
   opacity: 100%;
 }
 
-#headingText, #salaryText{
+#headingText,
+#salaryText {
   font-size: 18px;
   text-align: center;
 }
 
-.bglight{
+.bglight {
   background-color: rgb(250, 250, 250);
 }
 
-.addButton{
+.addButton {
   padding: 0 8px !important;
 }
 
@@ -85,19 +86,19 @@ button.active {
   box-shadow: none !important;
 }
 
-#homeData{
-  height: 85.6vh;
+#homeData {
+  height: 77.6vh;
   overflow-y: auto;
   padding: 0 20px;
 }
 
-#transactionData{
+#transactionData {
   height: 90.9vh;
   overflow-y: auto;
 }
 
-#categoriesDataShown{
-  height: 85.9vh;
+#categoriesDataShown {
+  height: 83.9vh;
   overflow-y: auto;
 }
 
@@ -123,11 +124,11 @@ button.active {
   background: rgb(31, 30, 30);
 }
 
-#categoriesSidebar{
+#categoriesSidebar {
   height: 49vh;
   overflow-y: auto;
 }
 
-hr{
+hr {
   margin: 10px !important;
 }

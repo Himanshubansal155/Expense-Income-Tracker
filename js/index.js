@@ -7,6 +7,9 @@ function showCategories() {
   if (categories !== null) {
     categories.sort();
     categories.map((e, index) => {
+      const totalAmount = overallBudget();
+      const bnud = overallBudget(e);
+      let per = (bnud / totalAmount) * 100;
       $("#categoriesSidebar").append(
         `<div class="mb-2 cardSide" onClick="showData('${e}')">${e} <span class="float-end">></span></div>`
       );
@@ -49,6 +52,9 @@ function showCategories() {
       </button>
     </div>
   </div>
+  <div class="card-body"><div class="progress">
+  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${per}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div></div>
 </div>`);
     });
   }
@@ -60,20 +66,30 @@ function monthChange(event) {
   const month = +event.target.value.split("-")[1];
   let totalMonthlyAmount = JSON.parse(localStorage.getItem("TotalSalary"));
   if (totalMonthlyAmount !== null) {
-    $('#amountMonthly').val(totalMonthlyAmount[(month - 1)]);
-  } else{
-    $('#amountMonthly').val(0);
+    $("#amountMonthly").val(totalMonthlyAmount[month - 1]);
+  } else {
+    $("#amountMonthly").val(0);
   }
 }
 
 function monthSalaryAdd() {
   let totalMonthlyAmount = JSON.parse(localStorage.getItem("TotalSalary"));
-  if(totalMonthlyAmount == null){
-    totalMonthlyAmountArray=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    totalMonthlyAmountArray[($('#month')[0].value.split('-')[1] - 1)] = +$('#amountMonthly')[0].value;
-    localStorage.setItem("TotalSalary", JSON.stringify(totalMonthlyAmountArray));
-  } else{
-    totalMonthlyAmount[($('#month')[0].value.split('-')[1] - 1)] = +$('#amountMonthly')[0].value;
+  if (totalMonthlyAmount == null) {
+    totalMonthlyAmountArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    totalMonthlyAmountArray[$("#month")[0].value.split("-")[1] - 1] =
+      +$("#amountMonthly")[0].value;
+    localStorage.setItem(
+      "TotalSalary",
+      JSON.stringify(totalMonthlyAmountArray)
+    );
+  } else {
+    totalMonthlyAmount[$("#month")[0].value.split("-")[1] - 1] =
+      +$("#amountMonthly")[0].value;
     localStorage.setItem("TotalSalary", JSON.stringify(totalMonthlyAmount));
   }
+}
+
+function selectedDate(event) {
+  let date = event.target.value;
+  showData(undefined, date);
 }
