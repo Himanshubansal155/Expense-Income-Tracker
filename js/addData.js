@@ -212,7 +212,7 @@ function deleteData(index, category) {
   toast.show();
 }
 
-function showData(category, date) {
+function showData(category, date, history) {
   let data = JSON.parse(localStorage.getItem("Expenses"));
   let displayData = "";
   if (data && data.length > 0) {
@@ -318,6 +318,9 @@ function showData(category, date) {
     </div>`;
       }
       if (category === undefined && date === undefined) {
+        const bnud = overallBudget(e.category);
+        let amount = +e.amount;
+        let per = (amount/bnud) * 100;
         displayData += `
         <div class="card container mb-3 cardhover">
       <div class="card-body row">
@@ -412,9 +415,19 @@ function showData(category, date) {
           }
         </div>
       </div>
+      ${
+        history === "history"
+          ? `<div class="card-body"><div class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${per}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div></div>`
+          : ""
+      }
     </div>`;
       }
       if (date !== undefined && category === undefined && e.date === date) {
+        const bnud = overallBudget(e.category);
+        let amount = +e.amount;
+        let per = (amount/bnud) * 100;
         displayData += `
         <div class="card container mb-3 cardhover">
       <div class="card-body row">
@@ -509,6 +522,13 @@ function showData(category, date) {
           }
         </div>
       </div>
+      ${
+        history === "history"
+          ? `<div class="card-body"><div class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${per}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div></div>`
+          : ""
+      }
     </div>`;
       }
     });

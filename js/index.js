@@ -89,7 +89,7 @@ function monthSalaryAdd() {
   }
 }
 
-function selectedDate(event) {
+function selectedDate(event, value) {
   let date = event.target.value;
-  showData(undefined, date);
+  showData(undefined, date, value);
 }

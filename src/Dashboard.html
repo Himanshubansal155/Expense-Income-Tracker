@@ -41,6 +41,7 @@
                   role="tab"
                   aria-controls="home"
                   aria-selected="true"
+                  onclick="showData()"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,7 @@
                   role="tab"
                   aria-controls="profile"
                   aria-selected="false"
-                  onclick="showData()"
+                  onclick="showData(undefined, undefined, 'history')"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -226,6 +227,25 @@
         role="tabpanel"
         aria-labelledby="profile-tab"
       >
+        <div class="d-flex justify-content-between container p-2">
+          <h1>Transaction History</h1>
+          <button
+            type="button"
+            class="btn btn-primary px-4 rounded-circle"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            +
+          </button>
+        </div>
+        <div class="p-2 px-4 d-flex justify-content-center">
+          <input
+            type="date"
+            onchange="selectedDate(event, 'history')"
+            class="form-control"
+            style="width: 70% !important"
+          />
+        </div>
         <div id="transactionData" class="mt-2"></div>
       </div>
       <div
@@ -238,21 +258,21 @@
           <h1>Categories</h1>
           <div>
             <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#categoriesModal"
-          >
-            +
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#categoriesModalDelete"
-          >
-            -
-          </button>
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#categoriesModal"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#categoriesModalDelete"
+            >
+              -
+            </button>
           </div>
         </div>
         <div class="bg-grey" id="categoriesDataShown"></div>
