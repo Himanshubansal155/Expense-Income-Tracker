@@ -139,7 +139,11 @@
             </a>
           </div>
         </div>
-        <a href="javascript:void(0);" onclick="myFunction()" class="d-md-none position-absolute end-0 pe-3 top-0 pt-4">
+        <a
+          href="javascript:void(0);"
+          onclick="myFunction()"
+          class="d-md-none position-absolute end-0 pe-3 top-0 pt-4"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -156,7 +160,7 @@
         </a>
       </nav>
     </div>
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="myTabContent" onclick="clickEvent()">
       <div
         class="tab-pane fade show active container-fluid h-100"
         id="home"
@@ -164,7 +168,7 @@
         aria-labelledby="home-tab"
       >
         <div class="row">
-          <div class="col-2 p-2 bglight shadow d-none d-xl-inline">
+          <div class="col-2 p-2 bglight shadow d-none d-lg-inline" id="categoriesContainer" onclick="stopPropogation(event)">
             <h1 id="headingText">
               Categories
               <button
@@ -211,17 +215,47 @@
               />
             </div>
           </div>
-          <div class="col-12 col-lg-9 col-xl-7 p-2">
-            <div class="d-flex justify-content-between px-4">
-              <h1>Daily Transaction</h1>
+          <div class="col-12 col-lg-10 col-xl-7 p-2">
+            <div class="d-flex justify-content-between px-4 align-items-center">
+              <a href="javascript:void(0);" onclick="leftClickEvent(event)" class="d-lg-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                  />
+                </svg>
+              </a>
+              <h1 class="mb-0">Daily Transaction</h1>
               <button
                 type="button"
-                class="btn btn-primary px-4 rounded-circle"
+                class="btn btn-primary p-2 px-sm-4 rounded-circle"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
               >
                 +
               </button>
+              <a href="javascript:void(0);" onclick="rightClickEvent(event)" class="d-xl-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                  />
+                </svg>
+              </a>
             </div>
             <div class="p-2 px-4 d-flex justify-content-center">
               <input
@@ -234,7 +268,7 @@
             <div id="homeData" class="mt-2"></div>
           </div>
           <div
-            class="col-2 col-lg-3 bglight shadow d-none d-lg-flex"
+            class="col-2 col-lg-3 bglight shadow d-none d-xl-flex"
             id="dataprogress"
           ></div>
         </div>

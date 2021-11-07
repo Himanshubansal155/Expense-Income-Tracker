@@ -622,7 +622,7 @@ function progressBarWidth() {
   const totalAmount = overallBudget();
   let maxIndex = 0;
   categories.map((e, index) => {
-    if (index < 4) {
+    if (index < 5) {
       const bnud = overallBudget(e);
       let per = (bnud / totalAmount) * 100;
       let str = `<div class="m-2"><div class="progressbar" id="progressBar"><div class="progress-bar progress-bar-striped progressbarw" role="progressbar" style="height: ${per}%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div></div>${e.substring(

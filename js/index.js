@@ -98,7 +98,7 @@ function myFunction() {
   var x = document.getElementById("myTab");
   var y = document.getElementById("navbarlog");
   var z = document.getElementById("columnDirection");
-  if (x.className.search('d-none') !== -1) {
+  if (x.className.search("d-none") !== -1) {
     x.classList.remove("d-none");
     y.classList.remove("d-none");
     x.className += " navbar-block";
@@ -107,4 +107,39 @@ function myFunction() {
     x.className += " d-none";
     y.className += " d-none";
   }
+}
+
+function leftClickEvent(event) {
+  if (event !== "event") {
+    event.stopPropagation();
+  }
+  var x = document.getElementById("categoriesContainer");
+  if (x.className.search("d-none") === -1 && event === "event") {
+    x.classList.remove("sidebar-absolute");
+    x.className += " d-none";
+  }
+  if (x.className.search("d-none") !== -1 && event !== "event") {
+    x.classList.remove("d-none");
+    x.className += " sidebar-absolute";
+  }
+}
+
+function rightClickEvent(event) {
+  if (event !== "event") {
+    event.stopPropagation();
+  }
+  var x = document.getElementById("dataprogress");
+  if (x.className.search("d-none") === -1 && event === "event") {
+    x.classList.remove("sidebar-absolute-right");
+    x.className += " d-none";
+  }
+  if (x.className.search("d-none") !== -1 && event !== "event") {
+    x.classList.remove("d-none");
+    x.className += " sidebar-absolute-right";
+  }
+}
+
+function clickEvent() {
+  leftClickEvent("event");
+  rightClickEvent("event");
 }
