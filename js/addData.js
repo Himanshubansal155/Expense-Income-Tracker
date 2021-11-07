@@ -223,9 +223,9 @@ function showData(category, date, history) {
         date === undefined
       ) {
         displayData += `
-        <div class="card container mb-3 cardhover">
+        <div class="card container-xxl mb-3 cardhover">
       <div class="card-body row">
-        <div class="d-flex align-items-center col-7">
+        <div class="d-flex align-items-center col col-sm-7">
           <img
             src="${createURL()}"
             alt="Profile"
@@ -238,10 +238,10 @@ function showData(category, date, history) {
             <p class="text-muted fs-italic mb-0">${e.date}</p>
           </div>
         </div>
-        <div class="col-3 d-flex align-items-center">
+        <div class="col col-sm-3 d-flex align-items-center">
           <p class="mb-0">&#8377;${e.amount}.00</p>
         </div>
-        <div class="col-2 d-flex align-items-center justify-content-center">
+        <div class="col col-sm-2 d-flex align-items-center justify-content-center">
           <button
             onClick="deleteData(${index}, ${category})"
             type="button"
@@ -320,11 +320,11 @@ function showData(category, date, history) {
       if (category === undefined && date === undefined) {
         const bnud = overallBudget(e.category);
         let amount = +e.amount;
-        let per = (amount/bnud) * 100;
+        let per = (amount / bnud) * 100;
         displayData += `
-        <div class="card container mb-3 cardhover">
+        <div class="card container-xxl mb-3 cardhover">
       <div class="card-body row">
-        <div class="d-flex align-items-center col-7">
+        <div class="d-flex align-items-center col col-sm-7">
           <img
             src="${createURL()}"
             alt="Profile"
@@ -337,11 +337,11 @@ function showData(category, date, history) {
             <p class="text-muted fs-italic mb-0">${e.date}</p>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col col-sm-3">
           <p class="text-muted mb-0">${e.category}</p>
           <p class="mb-0">&#8377;${e.amount}.00</p>
         </div>
-        <div class="col-2 d-flex align-items-center justify-content-center">
+        <div class="col col-sm-2 d-flex align-items-center justify-content-center">
           <button
             onClick="deleteData(${index})"
             type="button"
@@ -427,11 +427,11 @@ function showData(category, date, history) {
       if (date !== undefined && category === undefined && e.date === date) {
         const bnud = overallBudget(e.category);
         let amount = +e.amount;
-        let per = (amount/bnud) * 100;
+        let per = (amount / bnud) * 100;
         displayData += `
-        <div class="card container mb-3 cardhover">
+        <div class="card container-xxl mb-3 cardhover">
       <div class="card-body row">
-        <div class="d-flex align-items-center col-7">
+        <div class="d-flex align-items-center col col-sm-7">
           <img
             src="${createURL()}"
             alt="Profile"
@@ -444,11 +444,11 @@ function showData(category, date, history) {
             <p class="text-muted fs-italic mb-0">${e.date}</p>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col col-sm-3">
           <p class="text-muted mb-0">${e.category}</p>
           <p class="mb-0">&#8377;${e.amount}.00</p>
         </div>
-        <div class="col-2 d-flex align-items-center justify-content-center">
+        <div class="col col-sm-2 d-flex align-items-center justify-content-center">
           <button
             onClick="deleteData(${index})"
             type="button"
@@ -636,7 +636,7 @@ function progressBarWidth() {
   });
   if (maxIndex !== 0) {
     $("#dataprogress").append(
-      `<div class="moreSection">+${maxIndex} more</div>`
+      `<div class="moreSection d-none d-xl-flex">+${maxIndex} more</div>`
     );
   }
 

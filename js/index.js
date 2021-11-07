@@ -93,3 +93,18 @@ function selectedDate(event, value) {
   let date = event.target.value;
   showData(undefined, date, value);
 }
+
+function myFunction() {
+  var x = document.getElementById("myTab");
+  var y = document.getElementById("navbarlog");
+  var z = document.getElementById("columnDirection");
+  if (x.className.search('d-none') !== -1) {
+    x.classList.remove("d-none");
+    y.classList.remove("d-none");
+    x.className += " navbar-block";
+    y.className += " navbar-block";
+  } else {
+    x.className += " d-none";
+    y.className += " d-none";
+  }
+}

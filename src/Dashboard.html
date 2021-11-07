@@ -17,12 +17,12 @@
   <body>
     <div id="header">
       <nav class="navbar navbar-light bg-light pt-0 pb-0 shadow-sm">
-        <div class="container-fluid">
+        <div class="container-fluid" id="columnDirection">
           <div class="d-flex align-items-center">
             <a class="navbar-brand me-lg-4 me-2" href="#">
               <img src="./../img/Logo.png" alt="" width="140" height="60" />
             </a>
-            <ul class="nav" id="myTab" role="tablist">
+            <ul class="nav d-none d-md-flex" id="myTab" role="tablist">
               <li class="nav-item form-text" role="presentation">
                 <button
                   class="
@@ -116,7 +116,7 @@
               </li>
             </ul>
           </div>
-          <div class="d-flex">
+          <div class="d-none d-md-flex" id="navbarlog">
             <a class="btn" href="./../index.html">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -139,6 +139,21 @@
             </a>
           </div>
         </div>
+        <a href="javascript:void(0);" onclick="myFunction()" class="d-md-none position-absolute end-0 pe-3 top-0 pt-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+            />
+          </svg>
+        </a>
       </nav>
     </div>
     <div class="tab-content" id="myTabContent">
@@ -149,7 +164,7 @@
         aria-labelledby="home-tab"
       >
         <div class="row">
-          <div class="col-2 p-2 bglight shadow">
+          <div class="col-2 p-2 bglight shadow d-none d-xl-inline">
             <h1 id="headingText">
               Categories
               <button
@@ -196,7 +211,7 @@
               />
             </div>
           </div>
-          <div class="col-8 p-2">
+          <div class="col-12 col-lg-9 col-xl-7 p-2">
             <div class="d-flex justify-content-between px-4">
               <h1>Daily Transaction</h1>
               <button
@@ -218,7 +233,10 @@
             </div>
             <div id="homeData" class="mt-2"></div>
           </div>
-          <div class="d-flex col-2 bglight shadow" id="dataprogress"></div>
+          <div
+            class="col-2 col-lg-3 bglight shadow d-none d-lg-flex"
+            id="dataprogress"
+          ></div>
         </div>
       </div>
       <div
