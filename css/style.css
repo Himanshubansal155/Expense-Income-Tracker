@@ -83,7 +83,7 @@ button.active {
 }
 
 #homeData {
-  height: 76.5vh;
+  height: 78.5vh;
   overflow-y: auto;
   padding: 0 20px;
 }
@@ -129,21 +129,20 @@ hr {
   margin: 10px !important;
 }
 
-
-@media (max-width: 768px){
-  .navbar-block{
+@media (max-width: 768px) {
+  .navbar-block {
     display: block !important;
   }
-  .navbar-flex{
+  .navbar-flex {
     display: flex !important;
   }
-  .navbar-col{
+  .navbar-col {
     flex-direction: column !important;
   }
 }
 
-@media (max-width: 1024px){
-  .sidebar-absolute{
+@media (max-width: 1024px) {
+  .sidebar-absolute {
     position: absolute;
     z-index: 2;
     width: 250px !important;
@@ -152,7 +151,7 @@ hr {
 }
 
 @media (max-width: 1200px) {
-  .sidebar-absolute-right{
+  .sidebar-absolute-right {
     position: absolute;
     z-index: 2;
     width: 250px !important;
