@@ -185,9 +185,8 @@ function login() {
     users.map((user) => {
       if (user.email === document.forms["loginForm"]["email"].value) {
         if (user.password === document.forms["loginForm"]["password"].value) {
-          console.log("location is ",window.location);
-          alert('Logged In Successfully', window.location);
-          // window.location.pathname = "./src/Dashboard.html";
+          alert('Logged In Successfully');
+          window.location.pathname = "/Expense-Income-Tracker/src/Dashboard.html";
         }
       } else {
         alert("Email Not Found");
