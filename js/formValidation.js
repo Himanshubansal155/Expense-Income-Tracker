@@ -185,8 +185,8 @@ function login() {
     users.map((user) => {
       if (user.email === document.forms["loginForm"]["email"].value) {
         if (user.password === document.forms["loginForm"]["password"].value) {
-          console.log(window.location);
-          alert('Logged In Successfully');
+          console.log("location is ",window.location);
+          alert('Logged In Successfully', window.location);
           // window.location.pathname = "./src/Dashboard.html";
         }
       } else {
