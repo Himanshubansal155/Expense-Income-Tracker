@@ -116,11 +116,16 @@ function leftClickEvent(event) {
   var x = document.getElementById("categoriesContainer");
   if (x.className.search("d-none") === -1 && event === "event") {
     x.classList.remove("sidebar-absolute");
-    x.className += " d-none";
+    x.classList.remove("slide-in");
+    x.className += " slide-out";
+    setTimeout(function () {
+      x.className += " d-none";
+    }, 1000);
   }
   if (x.className.search("d-none") !== -1 && event !== "event") {
     x.classList.remove("d-none");
-    x.className += " sidebar-absolute";
+    x.classList.remove("slide-out");
+    x.className += " sidebar-absolute slide-in";
   }
 }
 
@@ -131,11 +136,12 @@ function rightClickEvent(event) {
   var x = document.getElementById("dataprogress");
   if (x.className.search("d-none") === -1 && event === "event") {
     x.classList.remove("sidebar-absolute-right");
+    x.classList.remove("slide-in-right");
     x.className += " d-none";
   }
   if (x.className.search("d-none") !== -1 && event !== "event") {
     x.classList.remove("d-none");
-    x.className += " sidebar-absolute-right";
+    x.className += " sidebar-absolute-right slide-in-right";
   }
 }
 
