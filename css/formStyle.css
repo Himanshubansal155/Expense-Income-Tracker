@@ -197,7 +197,7 @@ h3 .small {
 }
 
 .logo-container {
-  left: 50px;
+  left: 5px;
   position: absolute;
   top: 20px;
   z-index: 3;
@@ -212,7 +212,7 @@ h3 .small {
 }
 
 .wizard-container {
-  padding-top: 100px;
+  padding-top: 110px;
   z-index: 3;
 }
 
@@ -233,11 +233,6 @@ button.active {
   opacity: 1 !important;
   transition: all 1s ease;
 }
-
-/* button.active ~ .button1{
-  position: absolute;
-  left: -200px;
-} */
 
 li {
   padding: 0 !important;
@@ -276,10 +271,6 @@ button {
 
 .min-h{
   min-height: 320px;
-}
-
-.coloffset {
-  margin-left: 8.33%;
 }
 
 .form-group {

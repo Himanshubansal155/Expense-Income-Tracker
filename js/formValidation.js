@@ -26,7 +26,10 @@ function onLoginChange(e) {
     if (validateEmail(e.value)) {
       emailLoginValidate = true;
       document.getElementById("emailError").innerHTML = "";
-      if (document.forms["loginForm"]["password"].value !== "" && document.forms["loginForm"]["paasword"].value.length > 4) {
+      if (
+        document.forms["loginForm"]["password"].value !== "" &&
+        document.forms["loginForm"]["paasword"].value.length > 4
+      ) {
         document.getElementById("passwordError").innerHTML = "";
         passwordLoginValidate = true;
       }
@@ -70,11 +73,17 @@ function onSignupChange(e) {
     if (validateEmail(e.value)) {
       emailSignUpValidate = true;
       document.getElementById("emailSignError").innerHTML = "";
-      if (document.forms["signupForm"]["password"].value !== "" && document.forms["signupForm"]["password"].value.length > 4) {
+      if (
+        document.forms["signupForm"]["password"].value !== "" &&
+        document.forms["signupForm"]["password"].value.length > 4
+      ) {
         passwordSignUpValidate = true;
         document.getElementById("passwordSignError").innerHTML = "";
       }
-      if (document.forms["signupForm"]["name"].value !== "" && document.forms["signupForm"]["name"].value.length > 2) {
+      if (
+        document.forms["signupForm"]["name"].value !== "" &&
+        document.forms["signupForm"]["name"].value.length > 2
+      ) {
         nameSignUpValidate = true;
         document.getElementById("nameSignError").innerHTML = "";
       }
@@ -96,7 +105,10 @@ function onSignupChange(e) {
         emailSignUpValidate = true;
         document.getElementById("emailSignError").innerHTML = "";
       }
-      if (document.forms["signupForm"]["name"].value !== "" && document.forms["signupForm"]["name"].value.length > 2) {
+      if (
+        document.forms["signupForm"]["name"].value !== "" &&
+        document.forms["signupForm"]["name"].value.length > 2
+      ) {
         nameSignUpValidate = true;
         document.getElementById("nameSignError").innerHTML = "";
       }
@@ -118,7 +130,10 @@ function onSignupChange(e) {
         emailSignUpValidate = true;
         document.getElementById("emailSignError").innerHTML = "";
       }
-      if (document.forms["signupForm"]["password"].value !== "" && document.forms["signupForm"]["password"].value.length > 4) {
+      if (
+        document.forms["signupForm"]["password"].value !== "" &&
+        document.forms["signupForm"]["password"].value.length > 4
+      ) {
         passwordSignUpValidate = true;
         document.getElementById("passwordSignError").innerHTML = "";
       }
@@ -137,5 +152,45 @@ function onSignupChange(e) {
     document.getElementById("register").disabled = false;
   } else {
     document.getElementById("register").disabled = true;
+  }
+}
+
+function register() {
+  let users = JSON.parse(localStorage.getItem("Users"));
+  if (users !== null) {
+    users.push({
+      name: document.forms["signupForm"]["name"].value,
+      email: document.forms["signupForm"]["email"].value,
+      password: document.forms["signupForm"]["password"].value,
+    });
+    localStorage.setItem("Users", JSON.stringify(users));
+  } else {
+    let newUsers = [];
+    newUsers.push({
+      name: document.forms["signupForm"]["name"].value,
+      email: document.forms["signupForm"]["email"].value,
+      password: document.forms["signupForm"]["password"].value,
+    });
+    localStorage.setItem("Users", JSON.stringify(newUsers));
+  }
+  alert('Registered Successfully');
+  location.reload();
+}
+
+function login() {
+  let users = JSON.parse(localStorage.getItem("Users"));
+  if (users === null) {
+    alert("No User Found");
+  } else {
+    users.map((user) => {
+      if (user.email === document.forms["loginForm"]["email"].value) {
+        if (user.password === document.forms["loginForm"]["password"].value) {
+          alert('Logged In Successfully');
+          window.location.pathname = "/Expense-Income-Tracker/src/Dashboard.html";
+        }
+      } else {
+        alert("Email Not Found");
+      }
+    });
   }
 }
